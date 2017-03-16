@@ -1,14 +1,13 @@
-package by.krukouski.thesisApp;
+package by.krukouski.thesisapp;
 
-import by.krukouski.thesisApp.frame.MainFrame;
-import by.krukouski.thesisApp.frame.MainFrameTest;
+import by.krukouski.thesisapp.frame.MainFrame;
+import by.krukouski.thesisapp.frame.MainFrame2;
 
 public class App {
 
 	public static void main(String[] args){
-		//new MainFrameTest();
-			new MainFrame();
-		
+		//new MainFrame2();
+		new MainFrame();
 	}	
 	
 }

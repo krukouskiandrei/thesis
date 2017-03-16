@@ -1,4 +1,4 @@
-package by.krukouski.thesisApp.frame;
+package by.krukouski.thesisapp.frame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import by.krukouski.thesisApp.algorithms.probability.SolovayStrassen;
+import by.krukouski.thesisapp.algorithms.probability.SolovayStrassen;
 
 public class MainFrameTest extends JFrame implements ActionListener {
 	

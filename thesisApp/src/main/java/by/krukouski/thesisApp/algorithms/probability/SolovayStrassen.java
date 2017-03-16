@@ -1,8 +1,8 @@
-package by.krukouski.thesisApp.algorithms.probability;
+package by.krukouski.thesisapp.algorithms.probability;
 
 import java.math.BigInteger;
 
-import by.krukouski.thesisApp.algorithms.utils.symbols.Jacobi;
+import by.krukouski.thesisapp.algorithms.utils.symbols.Jacobi;
 
 
 

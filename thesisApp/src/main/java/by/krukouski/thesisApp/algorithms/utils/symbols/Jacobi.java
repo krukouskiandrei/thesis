@@ -1,4 +1,4 @@
-package by.krukouski.thesisApp.algorithms.utils.symbols;
+package by.krukouski.thesisapp.algorithms.utils.symbols;
 
 import java.math.BigInteger;
 

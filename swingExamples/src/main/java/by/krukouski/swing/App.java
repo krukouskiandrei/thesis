@@ -35,6 +35,7 @@ import by.krukouski.swing.example.SpringLayoutExample;
 import by.krukouski.swing.example.TabbedPaneExample;
 import by.krukouski.swing.example.TableExample;
 import by.krukouski.swing.example.TestEditor;
+import by.krukouski.swing.example.TestExampl;
 import by.krukouski.swing.example.TextAreaExample;
 import by.krukouski.swing.example.TextFieldExample;
 import by.krukouski.swing.example.ToolTipExample;
@@ -67,7 +68,7 @@ public class App {
 		//new SpinnerExample();
 		//new TabbedPaneExample();
 		//new TableExample();
-		//new TestEditor();
+		new TestEditor();
 		//new TextAreaExample();
 		//new TextFieldExample();
 		//new ToolTipExample();
@@ -79,10 +80,11 @@ public class App {
 		//new GridBagLayoutExample();
 		//new GroupLayoutExample();
 		//new SpringLayoutExample();
-		new JMenuBarExample();
+		//new JMenuBarExample();
 		//new JPopupMenuExample();
 		//new JPanelExample();
 		//new JFrameExample();
+		
 		
 	}
 	
