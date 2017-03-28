@@ -1,224 +1,180 @@
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
-Hello this is a debug message
-Hello this is an info message
+03-28@19:13:18 INFO  (MillerRabin.java:46)   - A = 3
+03-28@19:13:18 INFO  (MillerRabin.java:54)   - gtc(3,13) = 1
+03-28@19:13:18 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:18 INFO  (MillerRabin.java:69)   - 13 is prime on 1 - 1/4
+03-28@19:13:18 INFO  (MillerRabin.java:46)   - A = 2
+03-28@19:13:18 INFO  (MillerRabin.java:54)   - gtc(2,13) = 1
+03-28@19:13:18 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:18 INFO  (MillerRabin.java:69)   - 13 is prime on 1 - 1/4
+03-28@19:13:18 INFO  (MillerRabin.java:46)   - A = 9
+03-28@19:13:18 INFO  (MillerRabin.java:54)   - gtc(9,13) = 1
+03-28@19:13:18 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:18 INFO  (MillerRabin.java:69)   - 13 is prime on 1 - 1/4
+03-28@19:13:18 INFO  (MillerRabin.java:46)   - A = 8
+03-28@19:13:18 INFO  (MillerRabin.java:54)   - gtc(8,13) = 1
+03-28@19:13:18 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:18 INFO  (MillerRabin.java:69)   - 13 is prime on 1 - 1/4
+03-28@19:13:18 INFO  (MillerRabin.java:46)   - A = 8
+03-28@19:13:18 INFO  (MillerRabin.java:54)   - gtc(8,13) = 1
+03-28@19:13:18 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:18 INFO  (MillerRabin.java:69)   - 13 is prime on 1 - 1/4
+03-28@19:13:18 INFO  (MillerRabin.java:101)   - 13 is prime on 1 - 4^(-5)
+03-28@19:13:26 INFO  (MillerRabin.java:46)   - A = 7
+03-28@19:13:26 INFO  (MillerRabin.java:54)   - gtc(7,14) = 7
+03-28@19:13:26 INFO  (MillerRabin.java:57)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:96)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:46)   - A = 6
+03-28@19:13:26 INFO  (MillerRabin.java:54)   - gtc(6,14) = 2
+03-28@19:13:26 INFO  (MillerRabin.java:57)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:96)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:46)   - A = 4
+03-28@19:13:26 INFO  (MillerRabin.java:54)   - gtc(4,14) = 2
+03-28@19:13:26 INFO  (MillerRabin.java:57)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:96)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:46)   - A = 11
+03-28@19:13:26 INFO  (MillerRabin.java:54)   - gtc(11,14) = 1
+03-28@19:13:26 INFO  (MillerRabin.java:66)   - j = 11
+03-28@19:13:26 INFO  (MillerRabin.java:96)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:46)   - A = 2
+03-28@19:13:26 INFO  (MillerRabin.java:54)   - gtc(2,14) = 2
+03-28@19:13:26 INFO  (MillerRabin.java:57)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:96)   - 14 not prime
+03-28@19:13:26 INFO  (MillerRabin.java:101)   - 14 is prime on 1 - 4^(-5)
+03-28@19:13:37 INFO  (MillerRabin.java:46)   - A = 3
+03-28@19:13:37 INFO  (MillerRabin.java:54)   - gtc(3,31) = 1
+03-28@19:13:37 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:37 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:37 INFO  (MillerRabin.java:46)   - A = 11
+03-28@19:13:37 INFO  (MillerRabin.java:54)   - gtc(11,31) = 1
+03-28@19:13:37 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:37 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:37 INFO  (MillerRabin.java:46)   - A = 15
+03-28@19:13:37 INFO  (MillerRabin.java:54)   - gtc(15,31) = 1
+03-28@19:13:37 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:37 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:37 INFO  (MillerRabin.java:46)   - A = 18
+03-28@19:13:37 INFO  (MillerRabin.java:54)   - gtc(18,31) = 1
+03-28@19:13:37 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:37 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:37 INFO  (MillerRabin.java:46)   - A = 10
+03-28@19:13:37 INFO  (MillerRabin.java:54)   - gtc(10,31) = 1
+03-28@19:13:37 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:37 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:37 INFO  (MillerRabin.java:101)   - 31 is prime on 1 - 4^(-5)
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 16
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(16,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 2
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(2,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 10
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(10,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 7
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(7,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 24
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(24,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 14
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(14,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 17
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(17,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 6
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(6,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 23
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(23,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 18
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(18,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 25
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(25,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 14
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(14,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 22
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(22,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 21
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(21,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 13
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(13,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 8
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(8,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 24
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(24,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 16
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(16,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 9
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(9,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 5
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(5,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 7
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(7,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 7
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(7,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 25
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(25,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 24
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(24,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 26
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(26,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 18
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(18,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 23
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(23,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 29
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(29,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:46)   - A = 6
+03-28@19:13:46 INFO  (MillerRabin.java:54)   - gtc(6,31) = 1
+03-28@19:13:46 INFO  (MillerRabin.java:66)   - j = 1
+03-28@19:13:46 INFO  (MillerRabin.java:69)   - 31 is prime on 1 - 1/4
+03-28@19:13:46 INFO  (MillerRabin.java:101)   - 31 is prime on 1 - 4^(-29)

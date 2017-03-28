@@ -1,66 +1,86 @@
 package by.krukouski.prime.algorithms.probability;
 
 import java.math.BigInteger;
+import java.util.Random;
+
+import org.apache.log4j.Logger;
 
 import by.krukouski.prime.utils.symbols.Jacobi;
 
 public class SolovayStrassen {
 
-	private static BigInteger A = BigInteger.ONE;
+	private static Logger log = Logger.getLogger(SolovayStrassen.class);
 	
-	private static void increaseArgumentNum(BigInteger p){
-		A = A.add(BigInteger.ONE);		
+	private BigInteger A = BigInteger.ONE;
+	
+	private Random rnd = new Random();
+	
+	private Integer probability = new Integer(2);
+	
+	public void setProvability(Integer probability){
+		if(probability != null && probability > 0){
+			this.probability = probability;
+		}
+	}
+	
+	public Integer getProbability(){
+		return probability;
+	}
+	
+	private void increaseArgumentNum(BigInteger p){
+		do {
+			A = new BigInteger(p.bitLength(), rnd);
+		} while (A.compareTo(p) >= 0 || A.compareTo(BigInteger.ZERO) == 0);
+		log.info("A = " + A);
 	}
 	
 	
-	private static boolean checkNumber(BigInteger p){
+	private boolean checkNumber(BigInteger p){
 		//(a, p)
 		increaseArgumentNum(p);
-		//System.out.println(A);
 		BigInteger gtc = A.gcd(p);
-		//System.out.println(gtc);
+		log.info("gtc(" + A + "," + p + ") = " + gtc);
 		//(a, p) != 1
 		if(gtc.compareTo(BigInteger.ONE) != 0){
+			log.info(p + " not prime");
 			return false;
 		}
 		//j = a^(p-1)/2 mod<p>
 		BigInteger j = p.subtract(BigInteger.ONE);// p-1
-		//System.out.println(j);
 		j = j.divide(new BigInteger("2"));// (p-1)/2
-		//System.out.println(j);
 		j = A.modPow(j, p);
-		//System.out.println(j);
+		log.info("j = " + j);
 		if(p.subtract(j).equals(BigInteger.ONE)){
 			j = new BigInteger("-1");
+			log.info("j = " + j);
 		}
 		//J(a,p)
 		int jacobiSymbol = Jacobi.calculate(A, p);
-		//System.out.println(jacobiSymbol);
+		log.info("J(" + A + ", " + p + ") = " + jacobiSymbol);
 		//j != J(a,p) => not prime 
 		if(j.intValue() != jacobiSymbol){
+			log.info(p + " not prime");
 			return false;
 		}else{// => is prime
+			log.info(p + " is prime on 1/2");
 			return true;
 		}		
 		
 	} 
 	
-	public static String check(BigInteger p, int prob){
+	public boolean check(BigInteger p){
 		
 		boolean result = true;
 		
-		for(int i=0; i<prob; i++){
+		for(int i=0; i<probability; i++){
 			if(!checkNumber(p)){
+				log.info(p + " not prime");
 				result = false;
 			}
 		}
 		
-		if(result){
-			return p.toString() + " is prime with probability 1-2^" + prob;
-		}else{
-			return p.toString()  + " is not prime";
-		}
-		
+		log.info(p + " is prime on 1 - 2^(-" + probability + ")");
+		return result;
 	}
 	
 	
