@@ -25,4 +25,17 @@ private final static BigInteger TWO = new BigInteger("2");
 		}
 	}
 	
+	//BAD!!!!!!!reworked
+	public static boolean checkNumberForTest(BigInteger number, Integer probability){
+		MillerRabin mrAlgorithm = new MillerRabin();
+		Integer spyProbability = probability + 1;
+		if(number.compareTo(new BigInteger((spyProbability).toString())) > 0){
+			mrAlgorithm.setProvability(probability);
+		}else{
+			probability = number.subtract(TWO).intValue();
+			mrAlgorithm.setProvability(probability);
+		}
+		boolean result = mrAlgorithm.check(number);
+		return result;
+	}
 }

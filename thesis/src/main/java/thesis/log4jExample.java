@@ -49,8 +49,8 @@ public class log4jExample{
 	      System.out.println(res);*/
 	      //System.out.println(Primes.primeFactors(345625));
 	      //System.out.println(Jacobi.calculate(new BigInteger("7"), new BigInteger("15")));
-	      //System.out.println(SolovayStrassenFasades.checkNumber(new BigInteger("13"), 23));
-		   System.out.println(MillerRabinFacades.checkNumber(new BigInteger("31"), 56));
+	      //System.out.println(SolovayStrassenFacades.checkNumber(new BigInteger("2"), 23));
+		   //System.out.println(MillerRabinFacades.checkNumber(new BigInteger("34"), 56));
 		   /*List<BigInteger> array = new ArrayList<BigInteger>();
 		   boolean goout = false;
 		   int iteration = 0;

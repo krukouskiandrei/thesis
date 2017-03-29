@@ -25,5 +25,18 @@ public class SolovayStrassenFacades {
 		}
 	}
 	
-
+	//BAD!!!!!!!reworked
+	public static boolean checkNumberForTest(BigInteger number, Integer probability){
+		SolovayStrassen ssAlgorithm = new SolovayStrassen();
+		Integer spyProbability = probability + 1;
+		if(number.compareTo(new BigInteger((spyProbability).toString())) > 0){
+			ssAlgorithm.setProvability(probability);
+		}else{
+			probability = number.subtract(TWO).intValue();
+			ssAlgorithm.setProvability(probability);
+		}
+		boolean result = ssAlgorithm.check(number);
+		return result;
+	}
+	
 }

@@ -93,6 +93,16 @@ public class MillerRabin {
 		
 		boolean result = true;
 		
+		if(p.compareTo(BigInteger.ZERO) <= 0){
+			result = false;
+			log.info(p + " is negative number");
+			return result;
+		}
+		if(p.compareTo(TWO) == 0){
+			log.info(p + " is prime on 1 - 2^(-" + probability + ")");
+			return result;
+		}
+		
 		for(int i=0; i<probability; i++){
 			if(!checkNumber(p)){
 				log.info(p + " not prime");

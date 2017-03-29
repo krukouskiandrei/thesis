@@ -12,7 +12,7 @@ public class SolovayStrassen {
 	private static Logger log = Logger.getLogger(SolovayStrassen.class);
 	
 	private BigInteger A = BigInteger.ONE;
-	
+	private BigInteger TWO = new BigInteger("2");
 	private Random rnd = new Random();
 	
 	private Integer probability = new Integer(2);
@@ -71,7 +71,15 @@ public class SolovayStrassen {
 	public boolean check(BigInteger p){
 		
 		boolean result = true;
-		
+		if(p.compareTo(BigInteger.ZERO) <= 0){
+			result = false;
+			log.info(p + " is negative number");
+			return result;
+		}
+		if(p.compareTo(TWO) == 0){
+			log.info(p + " is prime on 1 - 2^(-" + probability + ")");
+			return result;
+		}
 		for(int i=0; i<probability; i++){
 			if(!checkNumber(p)){
 				log.info(p + " not prime");
