@@ -6,6 +6,7 @@ import java.util.Random;
 import org.apache.log4j.Logger;
 
 import by.krukouski.prime.utils.symbols.Jacobi;
+import by.krukouski.prime.utils.symbols.TimeTracker;
 
 public class SolovayStrassen {
 
@@ -80,13 +81,15 @@ public class SolovayStrassen {
 			log.info(p + " is prime on 1 - 2^(-" + probability + ")");
 			return result;
 		}
+		TimeTracker.getInstance().start();
 		for(int i=0; i<probability; i++){
 			if(!checkNumber(p)){
+				TimeTracker.getInstance().stop("Solovay-Strassen, Usualy method");
 				log.info(p + " not prime");
 				result = false;
 			}
 		}
-		
+		TimeTracker.getInstance().stop("Solovay-Strassen, Usualy method");
 		log.info(p + " is prime on 1 - 2^(-" + probability + ")");
 		return result;
 	}

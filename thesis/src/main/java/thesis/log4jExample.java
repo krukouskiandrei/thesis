@@ -3,8 +3,13 @@ package thesis;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.SQLException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.commons.math3.primes.Primes;
@@ -17,12 +22,13 @@ import by.krukouski.prime.algorithms.facades.SolovayStrassenFacades;
 //import by.krukouski.prime.utils.symbols.Jacobi;
 //import by.krukouski.prime.utils.symbols.Legendre;
 import by.krukouski.prime.algorithms.probability.SolovayStrassen;
+import by.krukouski.prime.utils.symbols.TimeTracker;
 public class log4jExample{
 
 	   /* Get actual class name to be printed on */
 	   static Logger log = Logger.getLogger(log4jExample.class);
 	   
-	   public static void main(String[] args)throws IOException,SQLException{
+	   public static void main(String[] args)throws IOException,SQLException, Exception{
 	     /* log.debug("Hello this is a debug message");
 	      log.info("Hello this is an info message");
 	      System.out.println("Hi");*/
@@ -49,8 +55,9 @@ public class log4jExample{
 	      System.out.println(res);*/
 	      //System.out.println(Primes.primeFactors(345625));
 	      //System.out.println(Jacobi.calculate(new BigInteger("7"), new BigInteger("15")));
-	      //System.out.println(SolovayStrassenFacades.checkNumber(new BigInteger("2"), 23));
-		   //System.out.println(MillerRabinFacades.checkNumber(new BigInteger("34"), 56));
+	      System.out.println(SolovayStrassenFacades.checkNumber(new BigInteger("101"), 23));
+		   System.out.println(MillerRabinFacades.checkNumber(new BigInteger("101"), 23));
+		   System.out.println(TimeTracker.getInstance().getTracker());
 		   /*List<BigInteger> array = new ArrayList<BigInteger>();
 		   boolean goout = false;
 		   int iteration = 0;
@@ -80,5 +87,31 @@ public class log4jExample{
 		   }
 		   System.out.println(num);
 		   System.out.println(count);*/
+		   
+		  /* LocalDateTime currentTime1 = LocalDateTime.now();
+		   System.out.println("Current DateTime: " + currentTime1);
+		   Thread.sleep(1322);
+		   LocalDateTime currentTime2 = LocalDateTime.now();
+		   System.out.println("Current DateTime: " + currentTime2);
+		   System.out.println("Current DateTime nono: " + currentTime2.getNano());
+		   //LocalDateTime result = currentTime2.minus(Period.of(currentTime1.getYear(), currentTime1.getMonthValue(), currentTime1.getDayOfMonth()));
+		   		   
+		   Duration result = Duration.between(currentTime1, currentTime2);
+		   System.out.println("Current DateTime between " + result.toMillis());
+		   
+		   class Local {};
+		   String name = Local.class.getEnclosingMethod().getName();
+		   System.out.println(name);
+		   String name2 = new Object(){}.getClass().getEnclosingMethod().getName();
+		   System.out.println(name2);
+		   Map<String, Integer> map = new HashMap<String, Integer>();
+		   map.put("S1", 1);
+		   map.put("S2", 2);
+		   map.put("S3", 3);
+		   System.out.println(map);
+		   map.put("S1", 11);
+		   map.put("S2", 22);
+		   System.out.println(map);*/
+		   
 	   }
 	}

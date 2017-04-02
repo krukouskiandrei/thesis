@@ -53,8 +53,14 @@ public class TextEditorPanel extends JPanel implements DocumentListener {
 	
 	public void changedUpdate(DocumentEvent e) {
 	}
-
-
+	
+	public String getText() {
+		return textArea.getText();
+	}
+	
+	public void cleanTextArea() {
+		textArea.setText("");
+	}
 	public void insertUpdate(DocumentEvent e) {		
 		final Document doc = e.getDocument();
 		txt_number_off_characters.setText("Numberlength: " + String.valueOf(doc.getLength()));		

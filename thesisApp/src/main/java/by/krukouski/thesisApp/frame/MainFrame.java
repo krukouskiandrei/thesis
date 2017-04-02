@@ -10,7 +10,8 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import by.krukouski.thesisapp.frame.panel.MainAlgorithmPanel;
+import by.krukouski.thesisapp.frame.panel.MillerRabinAlgorithmPanel;
+import by.krukouski.thesisapp.frame.panel.SolovayStrassenAlgorithmPanel;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -22,7 +23,6 @@ import java.awt.GridBagLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
-import net.miginfocom.swing.MigLayout;
 
 public class MainFrame extends JFrame {
 	public MainFrame() {
@@ -82,10 +82,10 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("Solovay-Strassen", null, panel, null);
 		panel.setLayout(new SpringLayout());
 		*/
-		MainAlgorithmPanel panel = new MainAlgorithmPanel();
+		SolovayStrassenAlgorithmPanel panel = new SolovayStrassenAlgorithmPanel();
 		tabbedPane.addTab("Solovay-Strassen", null, panel, null);
 				
-		JPanel panel_1 = new JPanel();
+		JPanel panel_1 = new MillerRabinAlgorithmPanel();
 		tabbedPane.addTab("Miller-Rabin", null, panel_1, null);
 		
 		JPanel panel_2 = new JPanel();
