@@ -2,12 +2,14 @@ package by.krukouski.thesisapp.frame.panel;
 
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.math.BigInteger;
 
-import javax.swing.ButtonGroup;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
@@ -15,27 +17,22 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 
+import org.jfree.ui.RefineryUtilities;
+
 import by.krukouski.prime.algorithms.facades.MillerRabinFacades;
-import by.krukouski.prime.algorithms.facades.SolovayStrassenFacades;
-import by.krukouski.prime.algorithms.probability.MillerRabin;
+import by.krukouski.thesisapp.frame.panel.chart.EstimateAlgorithmsBarChartFrame;
 import by.krukouski.thesisapp.frame.panel.text.TextEditorPanel;
-import javax.swing.AbstractAction;
-import javax.swing.AbstractButton;
 
-import java.awt.event.ActionEvent;
-import java.math.BigInteger;
-import java.util.Enumeration;
-
-import javax.swing.Action;
-
-public class MillerRabinAlgorithmPanel extends JPanel {
+public class ComparePanel extends JPanel {
 	
 	private final Action action = new SwingAction();
 	private final TextEditorPanel textEditorPanel = new TextEditorPanel();
 	private final JLabel lblResult;
 	private final JLabel lblProbability;
 	private final JTextPane textPane;
-	public MillerRabinAlgorithmPanel() {
+	
+	public ComparePanel() {
+		
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
@@ -85,7 +82,7 @@ public class MillerRabinAlgorithmPanel extends JPanel {
 		add(textEditorPanel);
 		
 	}
-
+	
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "Check");
@@ -95,7 +92,7 @@ public class MillerRabinAlgorithmPanel extends JPanel {
 		
 			if(getValue(NAME).equals("Check")){
 				
-				try{
+				/*try{
 					BigInteger number = getNumber();
 					Integer probability = getProbability();
 					checkNumber(number, probability);
@@ -104,7 +101,13 @@ public class MillerRabinAlgorithmPanel extends JPanel {
 					//throw Exception!!!!
 					System.out.println("93");
 				}
+				*/
 				
+				final EstimateAlgorithmsBarChartFrame demo = new EstimateAlgorithmsBarChartFrame("Algorithms time");
+				demo.pack();
+		        RefineryUtilities.centerFrameOnScreen(demo);
+		        demo.setVisible(true);
+		        
 				putValue(NAME, "Clean");
 				putValue(SHORT_DESCRIPTION, "Clean text editor");
 			}else{
@@ -138,4 +141,7 @@ public class MillerRabinAlgorithmPanel extends JPanel {
 			lblResult.setText("NOT PRIME");
 		}
 	}
+	
+	
+
 }

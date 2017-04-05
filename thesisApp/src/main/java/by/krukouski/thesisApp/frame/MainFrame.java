@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import by.krukouski.thesisapp.frame.panel.ComparePanel;
 import by.krukouski.thesisapp.frame.panel.MillerRabinAlgorithmPanel;
 import by.krukouski.thesisapp.frame.panel.SolovayStrassenAlgorithmPanel;
 
@@ -88,7 +89,7 @@ public class MainFrame extends JFrame {
 		JPanel panel_1 = new MillerRabinAlgorithmPanel();
 		tabbedPane.addTab("Miller-Rabin", null, panel_1, null);
 		
-		JPanel panel_2 = new JPanel();
+		JPanel panel_2 = new ComparePanel();
 		tabbedPane.addTab("Compare", null, panel_2, null);
 		panel_2.setLayout(new SpringLayout());
 		

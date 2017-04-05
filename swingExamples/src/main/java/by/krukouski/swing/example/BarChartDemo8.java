@@ -96,7 +96,7 @@ public class BarChartDemo8 extends ApplicationFrame {
             "Value",                  // range axis label
             dataset,                  // data
             PlotOrientation.VERTICAL, // orientation
-            false,                    // include legend
+            true,                    // include legend
             true,                     // tooltips?
             false                     // URLs?
         );
