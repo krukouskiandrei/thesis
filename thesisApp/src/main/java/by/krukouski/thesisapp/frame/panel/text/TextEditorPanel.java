@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -13,6 +14,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
+
+import by.krukouski.thesisapp.frame.menu.CopyPastePopupMenu;
+
 import javax.swing.SwingConstants;
 
 public class TextEditorPanel extends JPanel implements DocumentListener {
@@ -46,7 +50,9 @@ public class TextEditorPanel extends JPanel implements DocumentListener {
 		add(txt_number_off_characters, BorderLayout.SOUTH);
 		add(new JScrollPane(textArea), BorderLayout.CENTER);
 		
-		//pack();
+		JPopupMenu copuPastPopupMenu = new CopyPastePopupMenu();
+		textArea.setComponentPopupMenu(copuPastPopupMenu);
+		
 		setVisible(true);
 
 	}
