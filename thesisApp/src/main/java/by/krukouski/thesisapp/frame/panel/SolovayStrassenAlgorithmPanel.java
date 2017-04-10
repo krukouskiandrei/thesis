@@ -58,6 +58,7 @@ public class SolovayStrassenAlgorithmPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.WEST, rdbtnMethod_2, 51, SpringLayout.WEST, this);
 		buttonGroup.add(rdbtnMethod_2);
 		springLayout.putConstraint(SpringLayout.NORTH, rdbtnMethod_2, 0, SpringLayout.SOUTH, rdbtnMethod_1);
+		rdbtnMethod_2.setEnabled(false);
 		add(rdbtnMethod_2);
 		
 		textPane = new JTextPane(new DefaultStyledDocument() {

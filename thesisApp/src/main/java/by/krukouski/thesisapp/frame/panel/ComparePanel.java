@@ -19,7 +19,9 @@ import javax.swing.text.DefaultStyledDocument;
 
 import org.jfree.ui.RefineryUtilities;
 
+import by.krukouski.prime.algorithms.facades.CommonAlgorithmsFacades;
 import by.krukouski.prime.algorithms.facades.MillerRabinFacades;
+import by.krukouski.prime.utils.symbols.TimeTracker;
 import by.krukouski.thesisapp.frame.panel.chart.EstimateAlgorithmsBarChartFrame;
 import by.krukouski.thesisapp.frame.panel.text.TextEditorPanel;
 
@@ -92,7 +94,7 @@ public class ComparePanel extends JPanel {
 		
 			if(getValue(NAME).equals("Check")){
 				
-				/*try{
+				try{
 					BigInteger number = getNumber();
 					Integer probability = getProbability();
 					checkNumber(number, probability);
@@ -101,7 +103,6 @@ public class ComparePanel extends JPanel {
 					//throw Exception!!!!
 					System.out.println("93");
 				}
-				*/
 				
 				final EstimateAlgorithmsBarChartFrame demo = new EstimateAlgorithmsBarChartFrame("Algorithms time");
 				demo.pack();
@@ -134,9 +135,10 @@ public class ComparePanel extends JPanel {
 	}
 	
 	private void checkNumber(BigInteger number, Integer probability) {
-		boolean result = MillerRabinFacades.checkNumberForTest(number, probability);
+		boolean result = CommonAlgorithmsFacades.checkNumber(number, probability);
 		if(result){
 			lblResult.setText("IS PRIME");
+			System.out.println(TimeTracker.getInstance().getTracker());
 		}else{
 			lblResult.setText("NOT PRIME");
 		}

@@ -69,6 +69,38 @@ public class SolovayStrassen {
 		
 	} 
 	
+	private boolean checkNumberBinary(BigInteger p) {
+		//(a, p)
+		increaseArgumentNum(p);
+		BigInteger gtc = A.gcd(p);
+		log.info("gtc(" + A + "," + p + ") = " + gtc);
+		//(a, p) != 1
+		if(gtc.compareTo(BigInteger.ONE) != 0){
+			log.info(p + " not prime");
+			return false;
+		}
+		//j = a^(p-1)/2 mod<p>
+		BigInteger j = p.subtract(BigInteger.ONE);// p-1
+		j = j.divide(new BigInteger("2"));// (p-1)/2
+		j = A.modPow(j, p);
+		log.info("j = " + j);
+		if(p.subtract(j).equals(BigInteger.ONE)){
+			j = new BigInteger("-1");
+			log.info("j = " + j);
+		}
+		//J(a,p)
+		int jacobiSymbol = Jacobi.binaryAlgorithm(A, p);
+		log.info("J(" + A + ", " + p + ") = " + jacobiSymbol);
+		//j != J(a,p) => not prime 
+		if(j.intValue() != jacobiSymbol){
+			log.info(p + " not prime");
+			return false;
+		}else{// => is prime
+			log.info(p + " is prime on 1/2");
+			return true;
+		}
+	}
+	
 	public boolean check(BigInteger p){
 		
 		boolean result = true;
@@ -94,6 +126,31 @@ public class SolovayStrassen {
 		return result;
 	}
 	
+	public boolean checkBinary(BigInteger p) {
+		boolean result = true;
+		if(p.compareTo(BigInteger.ZERO) <= 0){
+			result = false;
+			log.info(p + " is negative number");
+			return result;
+		}
+		if(p.compareTo(TWO) == 0){
+			log.info(p + " is prime on 1 - 2^(-" + probability + ")");
+			return result;
+		}
+		TimeTracker.getInstance().start();
+		for(int i=0; i<probability; i++){
+			if(!checkNumberBinary(p)){
+				TimeTracker.getInstance().stop("Solovay-Strassen, Binary method");
+				log.info(p + " not prime");
+				result = false;
+			}
+		}
+		TimeTracker.getInstance().stop("Solovay-Strassen, Binary method");
+		log.info(p + " is prime on 1 - 2^(-" + probability + ")");
+		return result;
+		
+		
+	}
 	
 	
 	

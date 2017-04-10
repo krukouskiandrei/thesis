@@ -40,7 +40,7 @@ public class SolovayStrassenFacades {
 			result = ssAlgorithm.check(number);
 			break;
 		case "Binary algorithm":
-			result = ssAlgorithm.check(number);
+			result = ssAlgorithm.checkBinary(number);
 			break;
 		case "O(M(n)log(n)) algotithm":
 			result = ssAlgorithm.check(number);

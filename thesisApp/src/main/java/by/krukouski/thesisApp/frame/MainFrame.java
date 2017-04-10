@@ -91,8 +91,7 @@ public class MainFrame extends JFrame {
 		
 		JPanel panel_2 = new ComparePanel();
 		tabbedPane.addTab("Compare", null, panel_2, null);
-		panel_2.setLayout(new SpringLayout());
-		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		this.setSize(500, 500);
 		this.setVisible(true);
 	}

@@ -2,6 +2,9 @@ package by.krukouski.thesisapp.frame.panel.chart;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Map;
+
+import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -16,7 +19,9 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-public class EstimateAlgorithmsBarChartFrame extends ApplicationFrame {
+import by.krukouski.prime.utils.symbols.TimeTracker;
+
+public class EstimateAlgorithmsBarChartFrame extends JFrame {
 	
 	private final static String SOLOVAY_USUAL_SERIES = "Solovay-Strassen: usual";
 	private final static String SOLOVAY_BINARY_SERIES = "Solovay-Strassen: binary";
@@ -41,10 +46,14 @@ public class EstimateAlgorithmsBarChartFrame extends ApplicationFrame {
 		
 		final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
-		dataset.addValue(1.0, SOLOVAY_USUAL_SERIES, CATEGORY);
+		/*dataset.addValue(1.0, SOLOVAY_USUAL_SERIES, CATEGORY);
         dataset.addValue(4.0, SOLOVAY_BINARY_SERIES, CATEGORY);
         dataset.addValue(3.0, SOLOVAY_LOG_SERIES, CATEGORY);
-        dataset.addValue(5.0, MILLER_SERIES, CATEGORY);
+        dataset.addValue(5.0, MILLER_SERIES, CATEGORY);*/
+		Map<String, Long> timeTracker = TimeTracker.getInstance().getTracker();
+        dataset.addValue(timeTracker.get("Solovay-Strassen, Usualy method"), SOLOVAY_USUAL_SERIES, CATEGORY);
+        dataset.addValue(timeTracker.get("Solovay-Strassen, Binary method"), SOLOVAY_BINARY_SERIES, CATEGORY);
+        dataset.addValue(timeTracker.get("MillerRabin, usual method"), MILLER_SERIES, CATEGORY);
         
         return dataset;
         
@@ -56,7 +65,7 @@ public class EstimateAlgorithmsBarChartFrame extends ApplicationFrame {
         final JFreeChart chart = ChartFactory.createBarChart(
             "Probability Algorithm",       // chart title
             "Algorithm",               // domain axis label
-            "Time",                  // range axis label
+            "Time, ms",                  // range axis label
             dataset,                  // data
             PlotOrientation.VERTICAL, // orientation
             true,                    // include legend
