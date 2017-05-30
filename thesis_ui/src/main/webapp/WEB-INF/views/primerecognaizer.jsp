@@ -1,12 +1,12 @@
 <%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
 <div class="columns">
 	<div class="column">
-		<div class="modal">
+		<div class="modal is-active">
   			<div class="modal-background"></div>
   			<div class="modal-content">
-    			<p class="image is-4by3">
-      				<img src="http://bulma.io/images/placeholders/1280x960.png">
-    			</p>
+    			<div class="chart-container">
+					<canvas id="myChart"></canvas>
+				</div>
   			</div>
   			<button class="modal-close"></button>
 		</div>
@@ -33,6 +33,22 @@
       						<p id="invalid_number" class="help is-danger">Invalid format of number</p>
       					</springform:errors>
       					
+    				</div>
+  				</div>
+			</div>
+			
+			<div class="field is-horizontal" style="margin-bottom: 30px;">
+  				<div class="field-label is-normal">
+    				<springform:label path="probability" class="label">Probability</springform:label>
+  				</div>
+  				<div class="field-body">
+    				<div class="field">
+      					<div class="control">
+      						<springform:input path="probability"  id="probability_area" class="input" type="text" placeholder="0.5" />
+      					</div>
+      					<springform:errors path="probability">
+      						<p id="invalid_probability" class="help is-danger">Invalid format of number</p>
+      					</springform:errors>
     				</div>
   				</div>
 			</div>
@@ -124,5 +140,66 @@ if($('#invalid_number').length) {
 	$('#number_area').addClass('is-danger');
 }
 
+if($('#invalid_probability').length) {
+	$('#probability_area').addClass('is-danger');
+}
     
+</script>
+<script>
+	window.onload = function() {
+		var ctx = document.getElementById("myChart");
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+    				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    				datasets: [{
+        			label: '# of Votes',
+        			data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+        			backgroundColor: [
+            				'rgba(255, 99, 132, 0.2)',
+            				'rgba(54, 162, 235, 0.2)',
+            				'rgba(255, 206, 86, 0.2)',
+            				'rgba(75, 192, 192, 0.2)',
+            				'rgba(153, 102, 255, 0.2)',
+            				'rgba(255, 159, 64, 0.2)',
+            				'rgba(255, 99, 132, 0.2)',
+            				'rgba(54, 162, 235, 0.2)',
+            				'rgba(255, 206, 86, 0.2)',
+            				'rgba(75, 192, 192, 0.2)',
+            				'rgba(153, 102, 255, 0.2)',
+            				'rgba(255, 159, 64, 0.2)'
+        				],
+        			borderColor: [
+            				'rgba(255,99,132,1)',
+            				'rgba(54, 162, 235, 1)',
+            				'rgba(255, 206, 86, 1)',
+            				'rgba(75, 192, 192, 1)',
+            				'rgba(153, 102, 255, 1)',
+            				'rgba(255, 159, 64, 1)',
+            				'rgba(255,99,132,1)',
+            				'rgba(54, 162, 235, 1)',
+            				'rgba(255, 206, 86, 1)',
+            				'rgba(75, 192, 192, 1)',
+            				'rgba(153, 102, 255, 1)',
+            				'rgba(255, 159, 64, 1)'
+        			],
+        			borderWidth: 1
+    			}]
+			},
+			options: {
+    			scales: {
+        			yAxes: [{
+            			ticks: {
+                			beginAtZero:true
+          			  }
+        			}]
+    			},
+    			events: ['click'],
+    			tooltips: {
+        			mode: 'x'
+    			}
+			}
+		});
+	};
+
 </script>

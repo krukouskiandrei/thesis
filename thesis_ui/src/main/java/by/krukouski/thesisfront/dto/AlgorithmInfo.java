@@ -3,11 +3,8 @@ package by.krukouski.thesisfront.dto;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.krukouski.thesisfront.validator.BigNumberConstraint;
+import by.krukouski.thesisfront.validator.DoubleNumberConstraint;
 
 public class AlgorithmInfo implements Serializable {
 
@@ -15,6 +12,8 @@ public class AlgorithmInfo implements Serializable {
 	
 	@BigNumberConstraint
 	private BigInteger number;
+	@DoubleNumberConstraint
+	private Double probability;
 	private String testName;
 	private String jacobiAlgorithm;
 	private Boolean allAlgorithms;
@@ -26,6 +25,13 @@ public class AlgorithmInfo implements Serializable {
 	}
 	public void setNumber(BigInteger number) {
 		this.number = number;
+	}
+	
+	public Double getProbability() {
+		return probability;
+	}
+	public void setProbability(Double probability) {
+		this.probability = probability;
 	}
 	
 	public String getTestName() {
@@ -61,6 +67,9 @@ public class AlgorithmInfo implements Serializable {
         if(number != null ? !number.equals(algorithmInfo.getNumber()) : algorithmInfo.getNumber() != null){
         	return false;
         }
+        if(probability != null ? !probability.equals(algorithmInfo.getProbability()) : algorithmInfo.getProbability() != null){
+        	return false;
+        }
         if(testName != null ? !testName.equals(algorithmInfo.getTestName()) : algorithmInfo.getTestName() != null){
         	return false;
         }
@@ -76,6 +85,7 @@ public class AlgorithmInfo implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = number != null ? number.hashCode() : 0;
+		hash = hash*41 + (probability != null ? probability.hashCode() : 0);
 		hash = hash*41 + (testName != null ? testName.hashCode() : 0);
 		hash = hash*41 + (jacobiAlgorithm != null ? jacobiAlgorithm.hashCode() : 0);
 		hash = hash*41 + (allAlgorithms != null ? allAlgorithms.hashCode() : 0);
@@ -84,6 +94,6 @@ public class AlgorithmInfo implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "AlgotithmInfo [number=" + number + ", testName=" + testName + ", jacobiAlgorithm=" + jacobiAlgorithm + ", allAlgorithms=" + allAlgorithms + "]";
+		return "AlgotithmInfo [number=" + number + ", probability=" + probability + ", testName=" + testName + ", jacobiAlgorithm=" + jacobiAlgorithm + ", allAlgorithms=" + allAlgorithms + "]";
 	}
 }

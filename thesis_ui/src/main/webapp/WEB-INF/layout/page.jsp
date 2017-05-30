@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="resources/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="resources/js/main.js"></script>
+    <script src="resources/js/Chart.js"></script>
 </head>
 <body>
 
