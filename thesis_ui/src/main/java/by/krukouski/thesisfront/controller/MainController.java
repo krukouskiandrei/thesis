@@ -1,22 +1,31 @@
 package by.krukouski.thesisfront.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import by.krukouski.thesisfront.dto.AlgorithmInfo;
+import by.krukouski.core.prime.exceptions.AlgorithmServiceExeption;
+import by.krukouski.core.service.AlgorithmService;
+import by.krukouski.thesisfront.dto.AlgorithmInfoDTO;
+import by.krukouski.thesisfront.dto.AlgorithmTimeInfo;
 
 @Controller
 public class MainController {
 
+	@Autowired
+	AlgorithmService algorithmService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage(Model model) {
-		model.addAttribute(new AlgorithmInfo());
+		model.addAttribute(new AlgorithmInfoDTO());
 		return "primerecognaizer";
 	}
 	
@@ -26,11 +35,21 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "checkNumber", method = RequestMethod.POST)
-	public String checkNumber(@Valid AlgorithmInfo algorithmInfo, BindingResult result, Model model) {
+	public String checkNumber(@Valid AlgorithmInfoDTO algorithmInfo, BindingResult result, Model model) {
 		if(result.hasErrors()){
 			return "primerecognaizer";
 		}
-		model.addAttribute(new AlgorithmInfo());
+		boolean testResult = false;
+		List<AlgorithmTimeInfo> timeInfo = new ArrayList<AlgorithmTimeInfo>();
+		try{
+			testResult = algorithmService.probabilityTest(algorithmInfo, timeInfo);
+		} catch(AlgorithmServiceExeption e) {
+			//throw Exception
+		}
+		model.addAttribute(new AlgorithmInfoDTO());
+		model.addAttribute("testResult", testResult);
+		model.addAttribute("number", algorithmInfo.getNumber());
+		model.addAttribute("timeInfo", timeInfo);
 		return "primerecognaizer";
 	}
 	

@@ -1,24 +1,44 @@
 <%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${not empty testResult}">
 <div class="columns">
 	<div class="column">
 		<div class="modal is-active">
   			<div class="modal-background"></div>
   			<div class="modal-content">
-    			<div class="chart-container">
-					<canvas id="myChart"></canvas>
-				</div>
+  				<div class="card" style="padding: 5%;">
+  					<div class="card-image">
+     					<div class="chart-container">
+							<canvas id="myChart"></canvas>
+						</div>
+  					</div>
+  					<div class="card-content">
+    					<h1 class="title is-1 has-text-centered">
+  						<c:choose>
+  							<c:when test="${testResult}">
+  								Number is prime
+  							</c:when>
+  							<c:otherwise>
+  								Number isn't prime
+  							</c:otherwise>
+  						</c:choose>
+  						</h1>
+  						
+  						<textarea class="textarea" placeholder="Textarea"><c:out value="${number}" /></textarea>
+  					</div>
+				</div>    			
   			</div>
   			<button class="modal-close"></button>
 		</div>
 	</div>
 </div>
-
+</c:if>
 
 <h1 class="title has-text-centered" style="margin-bottom: 70px;">Probabilistic tests of simplicity</h1>
  
 <div class="columns is-mobile">
 	<div class="column is-half is-offset-one-quarter">
-		<springform:form action="${contextPath}/checkNumber" method="POST" commandName="algorithmInfo">
+		<springform:form action="${contextPath}/checkNumber" method="POST" commandName="algorithmInfoDTO">
 			
 			<div class="field is-horizontal" style="margin-bottom: 30px;">
   				<div class="field-label is-normal">
@@ -27,7 +47,8 @@
   				<div class="field-body">
     				<div class="field">
       					<div class="control">
-        					<springform:textarea path="number" class="textarea" id="number_area" placeholder="Enter number"></springform:textarea>
+        					<springform:textarea path="number" class="textarea" id="number_area" placeholder="Enter number" onkeyup="countChar(this)"></springform:textarea>
+        					<div id="charNum">0</div>
       					</div>
       					<springform:errors path="number">
       						<p id="invalid_number" class="help is-danger">Invalid format of number</p>
@@ -144,62 +165,80 @@ if($('#invalid_probability').length) {
 	$('#probability_area').addClass('is-danger');
 }
     
+function countChar(val) {
+    var len = val.value.length;
+    $('#charNum').text(len);
+};
+    
 </script>
 <script>
+	
+	/* var labelsName = ["Red", "Green", "Orange"];
+	var dataInfo = [12, 19, 3];
+	var backgroundColorList = [
+		'rgba(75, 192, 192, 0.2)',
+		'rgba(153, 102, 255, 0.2)',
+		'rgba(255, 159, 64, 0.2)'
+	];
+	var borderColorList = [
+		'rgba(255,99,132,1)',
+		'rgba(54, 162, 235, 1)',
+		'rgba(255, 206, 86, 1)'
+	]; */
+	var labelsName = [];
+	var dataInfo = [];
+	var backgroundColorList = [
+		'rgba(75, 192, 192, 0.2)',
+		'rgba(153, 102, 255, 0.2)',
+		'rgba(255, 159, 64, 0.2)',
+		'rgba(255,99,132,1)',
+		'rgba(54, 162, 235, 1)',
+		'rgba(255, 206, 86, 1)'
+		
+	];
+	var borderColorList = [
+		'rgba(75, 192, 192, 0.2)',
+		'rgba(153, 102, 255, 0.2)',
+		'rgba(255, 159, 64, 0.2)',
+		'rgba(255,99,132,1)',
+		'rgba(54, 162, 235, 1)',
+		'rgba(255, 206, 86, 1)'
+	];
+	<c:forEach items="${timeInfo}" var="time">
+		labelsName.push("${time.name}");
+		dataInfo.push(${time.duration});
+	</c:forEach>
+	var data = {
+		labels: labelsName,
+		datasets: [{
+			label: 'Probabiliti test time',
+			data: dataInfo,
+			backgroundColor: backgroundColorList,
+			borderColor: borderColorList,
+			borderWidth: 1
+		}]
+	};
+
+
+
+
 	window.onload = function() {
 		var ctx = document.getElementById("myChart");
 		var myChart = new Chart(ctx, {
 			type: 'bar',
-			data: {
-    				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    				datasets: [{
-        			label: '# of Votes',
-        			data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
-        			backgroundColor: [
-            				'rgba(255, 99, 132, 0.2)',
-            				'rgba(54, 162, 235, 0.2)',
-            				'rgba(255, 206, 86, 0.2)',
-            				'rgba(75, 192, 192, 0.2)',
-            				'rgba(153, 102, 255, 0.2)',
-            				'rgba(255, 159, 64, 0.2)',
-            				'rgba(255, 99, 132, 0.2)',
-            				'rgba(54, 162, 235, 0.2)',
-            				'rgba(255, 206, 86, 0.2)',
-            				'rgba(75, 192, 192, 0.2)',
-            				'rgba(153, 102, 255, 0.2)',
-            				'rgba(255, 159, 64, 0.2)'
-        				],
-        			borderColor: [
-            				'rgba(255,99,132,1)',
-            				'rgba(54, 162, 235, 1)',
-            				'rgba(255, 206, 86, 1)',
-            				'rgba(75, 192, 192, 1)',
-            				'rgba(153, 102, 255, 1)',
-            				'rgba(255, 159, 64, 1)',
-            				'rgba(255,99,132,1)',
-            				'rgba(54, 162, 235, 1)',
-            				'rgba(255, 206, 86, 1)',
-            				'rgba(75, 192, 192, 1)',
-            				'rgba(153, 102, 255, 1)',
-            				'rgba(255, 159, 64, 1)'
-        			],
-        			borderWidth: 1
-    			}]
-			},
+			data: data,
 			options: {
     			scales: {
         			yAxes: [{
             			ticks: {
                 			beginAtZero:true
-          			  }
+          				}
         			}]
     			},
-    			events: ['click'],
-    			tooltips: {
-        			mode: 'x'
-    			}
+    			events: ['click']
 			}
-		});
-	};
+			});
+		};
+	
 
 </script>

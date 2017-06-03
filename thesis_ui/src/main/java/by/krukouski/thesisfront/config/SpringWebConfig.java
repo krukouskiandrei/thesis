@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="by.krukouski.thesisfront")
+@ComponentScan(basePackages="by.krukouski")
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override

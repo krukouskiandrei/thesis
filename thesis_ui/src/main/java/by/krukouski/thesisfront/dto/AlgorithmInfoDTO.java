@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import by.krukouski.thesisfront.validator.BigNumberConstraint;
 import by.krukouski.thesisfront.validator.DoubleNumberConstraint;
 
-public class AlgorithmInfo implements Serializable {
+public class AlgorithmInfoDTO implements Serializable {
 
 	private static final long serialVersionUID = 8382927492947593153L;
 	
@@ -18,7 +18,7 @@ public class AlgorithmInfo implements Serializable {
 	private String jacobiAlgorithm;
 	private Boolean allAlgorithms;
 	
-	public AlgorithmInfo() {}
+	public AlgorithmInfoDTO() {}
 	
 	public BigInteger getNumber() {
 		return number;
@@ -63,7 +63,7 @@ public class AlgorithmInfo implements Serializable {
         if(object == null || getClass() !=  object.getClass()){
             return false;
         }
-        AlgorithmInfo algorithmInfo = (AlgorithmInfo) object;
+        AlgorithmInfoDTO algorithmInfo = (AlgorithmInfoDTO) object;
         if(number != null ? !number.equals(algorithmInfo.getNumber()) : algorithmInfo.getNumber() != null){
         	return false;
         }
