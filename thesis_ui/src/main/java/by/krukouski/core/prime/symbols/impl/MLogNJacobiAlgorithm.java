@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import by.krukouski.core.prime.exceptions.SymbolsException;
 import by.krukouski.core.prime.symbols.Symbols;
+import by.krukouski.core.utils.MyMatrix;
 
 @Component("mlognJacobiAlgorithm")
 public class MLogNJacobiAlgorithm implements Symbols {
@@ -29,11 +30,6 @@ public class MLogNJacobiAlgorithm implements Symbols {
 			throw new SymbolsException();			
 		}
 		
-		//b (mod2) = 1 => b = b * 2
-		if((b.mod(TWO)).compareTo(BigInteger.ONE) == 0) {
-			b = b.multiply(TWO);
-		}
-		
 		//v(a) = 0 and v(b) > 0
 		if(secondValuation(a) == 0 && secondValuation(b) != 0) {
 			BigInteger s = BigInteger.ZERO;
@@ -48,12 +44,13 @@ public class MLogNJacobiAlgorithm implements Symbols {
 				HalfBinaryJacobi halfBinaryJacobi = new HalfBinaryJacobi(a, b, k);
 				BigInteger sHatch = halfBinaryJacobi.getS();
 				j = halfBinaryJacobi.getJ().intValue();
-				BlockRealMatrix RR = halfBinaryJacobi.getR();
+				//BlockRealMatrix RR = halfBinaryJacobi.getR();
+				MyMatrix RR = halfBinaryJacobi.getR();
 				s = (s.add(sHatch)).mod(TWO);
-				BigInteger RR11 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 0)).intValue()));
-				BigInteger RR12 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 1)).intValue()));
-				BigInteger RR21 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 0)).intValue()));
-				BigInteger RR22 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 1)).intValue()));
+				BigInteger RR11 = RR.getA1();
+				BigInteger RR12 = RR.getA2();
+				BigInteger RR21 = RR.getA3();
+				BigInteger RR22 = RR.getA4();
 				BigInteger oldA = new BigInteger(a.toString());
 				BigInteger oldB = new BigInteger(b.toString());
 				a = ((RR11.multiply(oldA)).add(RR12.multiply(oldB))).divide(TWO.pow(2*j));
@@ -169,7 +166,8 @@ public class MLogNJacobiAlgorithm implements Symbols {
 		
 		private BigInteger s;
 		private BigInteger j;
-		private BlockRealMatrix R = new BlockRealMatrix(2, 2);
+		//private BlockRealMatrix R = new BlockRealMatrix(2, 2);
+		private MyMatrix R = new MyMatrix();
 		
 		public HalfBinaryJacobi(BigInteger a, BigInteger b, int k) {
 			//v(a) = 0 and v(b) > 0
@@ -178,10 +176,14 @@ public class MLogNJacobiAlgorithm implements Symbols {
 				if(secondValuation(b) > k || secondValuation(b) == -1) {
 					this.s = BigInteger.ZERO;
 					this.j = BigInteger.ZERO;
-					this.R.addToEntry(0, 0, 1);
+					this.R.setA1(BigInteger.ONE);
+					this.R.setA2(BigInteger.ZERO);
+					this.R.setA3(BigInteger.ZERO);
+					this.R.setA4(BigInteger.ONE);
+					/*this.R.addToEntry(0, 0, 1);
 					this.R.addToEntry(0, 1, 0);
 					this.R.addToEntry(1, 0, 0);
-					this.R.addToEntry(1, 1, 1);
+					this.R.addToEntry(1, 1, 1);*/
 				} else {
 					int k1 = k/2;
 					//a1 = a (mod 2^(2*k1 + 2))
@@ -191,11 +193,12 @@ public class MLogNJacobiAlgorithm implements Symbols {
 					HalfBinaryJacobi halfBinaryJacobi = new HalfBinaryJacobi(a1, b1, k1);
 					BigInteger s1 = halfBinaryJacobi.getS();
 					BigInteger j1 = halfBinaryJacobi.getJ();
-					BlockRealMatrix RR = halfBinaryJacobi.getR();
-					BigInteger RR11 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 0)).intValue()));
-					BigInteger RR12 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 1)).intValue()));
-					BigInteger RR21 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 0)).intValue()));
-					BigInteger RR22 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 1)).intValue()));
+					//BlockRealMatrix RR = halfBinaryJacobi.getR();
+					MyMatrix RR = halfBinaryJacobi.getR();
+					BigInteger RR11 = RR.getA1();
+					BigInteger RR12 = RR.getA2();
+					BigInteger RR21 = RR.getA3();
+					BigInteger RR22 = RR.getA4();
 					BigInteger aHatch = ((RR11.multiply(a)).add(RR12.multiply(b))).divide(TWO.pow(2*j1.intValue()));
 					BigInteger bHatch = ((RR21.multiply(a)).add(RR22.multiply(b))).divide(TWO.pow(2*j1.intValue()));
 					int j0 = secondValuation(bHatch);
@@ -211,7 +214,8 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						BigInteger r = binaryDividePos.getR();
 						//b'' = b'/2^j0
 						BigInteger bDoubleHatch = bHatch.divide(TWO.pow(j0));
-						BlockRealMatrix Q = new BlockRealMatrix(2, 2);
+						//BlockRealMatrix Q = new BlockRealMatrix(2, 2);
+						MyMatrix Q = new MyMatrix();
 						BigInteger a2;
 						BigInteger b2;
 						BigInteger m;
@@ -231,18 +235,26 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						    //a2 = a' - 4c
 						    a2 = aHatch.subtract(FOUR.multiply(c));
 						    b2 = TWO.multiply(bDoubleHatch.add(c));
-						    Q.addToEntry(0, 0, (((FOUR.pow(m.intValue())).add(FOUR.multiply(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
+						    Q.setA1(((FOUR.pow(m.intValue())).add(FOUR.multiply(NEGATIVEONE.pow(m.intValue())))).divide(FIVE));
+						    Q.setA2((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE));
+						    Q.setA3((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE));
+						    Q.setA4(((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE));
+						    /*Q.addToEntry(0, 0, (((FOUR.pow(m.intValue())).add(FOUR.multiply(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
 						    Q.addToEntry(0, 1, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
 						    Q.addToEntry(1, 0, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
-						    Q.addToEntry(1, 1, (((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE)).intValue());
+						    Q.addToEntry(1, 1, (((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE)).intValue());*/
 						} else {
 							s0 = (s0.add(((aHatch.subtract(BigInteger.ONE)).multiply(bDoubleHatch.subtract(BigInteger.ONE))).divide(FOUR))).mod(TWO);
 							a2 = bDoubleHatch;
 							b2 = r.divide(TWO.pow(j0));
-							Q.addToEntry(0, 0, 0);
+							Q.setA1(BigInteger.ZERO);
+						    Q.setA2(TWO.pow(j0));
+						    Q.setA3(TWO.pow(j0));
+						    Q.setA4(q);
+							/*Q.addToEntry(0, 0, 0);
 							Q.addToEntry(0, 1, TWO.pow(j0).intValue());
 							Q.addToEntry(1, 0, TWO.pow(j0).intValue());
-							Q.addToEntry(1, 1, q.intValue());
+							Q.addToEntry(1, 1, q.intValue());*/
 							m = new BigInteger(String.valueOf(j0));
 						}
 						
@@ -251,10 +263,11 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						HalfBinaryJacobi halfBinaryJacobi2 = new HalfBinaryJacobi(a2.mod(TWO.pow(2*k2 + 2)), b2.mod(TWO.pow(2*k2 + 2)), k2);
 						BigInteger s2 = halfBinaryJacobi2.getS();
 						BigInteger j2 = halfBinaryJacobi2.getJ();
-						BlockRealMatrix S = halfBinaryJacobi2.getR();
+						MyMatrix S = halfBinaryJacobi2.getR();
+						//BlockRealMatrix S = halfBinaryJacobi2.getR();
 						this.s = ((s0.add(s1)).add(s2)).mod(TWO);
 						this.j = (j1.add(j2)).add(m);
-						this.R = (S.multiply(Q)).multiply(RR);						
+						this.R = (S.calculate(Q)).calculate(RR);						
 					}
 				}
 			}
@@ -266,7 +279,7 @@ public class MLogNJacobiAlgorithm implements Symbols {
 		public BigInteger getJ() {
 			return j;
 		}
-		public BlockRealMatrix getR() {
+		public MyMatrix getR() {
 			return R;
 		}
 		

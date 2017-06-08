@@ -28,9 +28,9 @@ public class Runner {
 			
 		}*/
 		
-		/*PrimeNumberInfo primeNumberInfo = new PrimeNumberInfo();
+		PrimeNumberInfo primeNumberInfo = new PrimeNumberInfo();
 		
-		primeNumberInfo.setPrimeNumber(new BigInteger("134018557978203030902914228584548574807340677870227093875548414731838242033808783440682895571"));
+		primeNumberInfo.setPrimeNumber(new BigInteger("100207100213100237100267"));
 		primeNumberInfo.setProbability(0.75, 2);
 		MLogNJacobiAlgorithm mLogNJacobiAlgorithm = new MLogNJacobiAlgorithm();
 		primeNumberInfo.setJacobiAlgorithm(mLogNJacobiAlgorithm);
@@ -40,9 +40,9 @@ public class Runner {
 			System.out.println(result);
 		} catch(Exception e) {
 			
-		}*/
+		}
 		
-		BlockRealMatrix matrix1 = new BlockRealMatrix(2, 2);
+		/*BlockRealMatrix matrix1 = new BlockRealMatrix(2, 2);
 		matrix1.addToEntry(0, 0, 123);
 		matrix1.addToEntry(0, 1, 321);
 		matrix1.addToEntry(1, 0, 456);
@@ -68,7 +68,7 @@ public class Runner {
 
 		System.out.println(matrix1.multiply(matrix2));
 		
-		System.out.println(myMatrix1.calculate(myMatrix2));
+		System.out.println(myMatrix1.calculate(myMatrix2));*/
 		
 		
 	}

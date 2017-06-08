@@ -97,7 +97,7 @@ public class SolovayStrassen implements ProbabilityAlgorithm {
 	private void increaseArgumentNum(BigInteger p){
 		do {
 			A = new BigInteger(p.bitLength(), rnd);
-		} while (A.compareTo(p) >= 0 || A.compareTo(BigInteger.ZERO) == 0);
+		} while (A.compareTo(p) >= 0 || A.compareTo(BigInteger.ZERO) == 0 || A.mod(TWO).compareTo(BigInteger.ONE) == 0);
 		log.info("A = " + A);
 	}
 	
