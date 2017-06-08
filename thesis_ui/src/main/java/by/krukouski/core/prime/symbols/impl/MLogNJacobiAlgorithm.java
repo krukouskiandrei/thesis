@@ -28,12 +28,17 @@ public class MLogNJacobiAlgorithm implements Symbols {
 			log.info("second number shouldn't be even or negative");
 			throw new SymbolsException();			
 		}
-				
+		
+		//b (mod2) = 1 => b = b * 2
+		if((b.mod(TWO)).compareTo(BigInteger.ONE) == 0) {
+			b = b.multiply(TWO);
+		}
+		
 		//v(a) = 0 and v(b) > 0
 		if(secondValuation(a) == 0 && secondValuation(b) != 0) {
 			BigInteger s = BigInteger.ZERO;
 			int j = secondValuation(b);
-			while(((TWO.pow(j)).multiply(a)).compareTo(b) != 0) {
+			while(j == -1 ? ((TWO.multiply(a)).compareTo(b) !=0) : (((TWO.pow(j)).multiply(a)).compareTo(b) != 0)) {
 				int k;
 				if(secondValuation(b) > (b.bitLength()/3)) {
 					k = secondValuation(b);
@@ -49,8 +54,10 @@ public class MLogNJacobiAlgorithm implements Symbols {
 				BigInteger RR12 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 1)).intValue()));
 				BigInteger RR21 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 0)).intValue()));
 				BigInteger RR22 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 1)).intValue()));
-				a = (TWO.pow(-2*j)).multiply((RR11.multiply(a)).add(RR12.multiply(b)));
-				b = (TWO.pow(-2*j)).multiply((RR21.multiply(a)).add(RR22.multiply(b)));
+				BigInteger oldA = new BigInteger(a.toString());
+				BigInteger oldB = new BigInteger(b.toString());
+				a = ((RR11.multiply(oldA)).add(RR12.multiply(oldB))).divide(TWO.pow(2*j));
+				b = ((RR21.multiply(oldA)).add(RR22.multiply(oldB))).divide(TWO.pow(2*j));
 				j = secondValuation(b);				
 			}
 			if(a.compareTo(BigInteger.ONE) == 0) {
@@ -84,14 +91,67 @@ public class MLogNJacobiAlgorithm implements Symbols {
 		private BigInteger q;
 		private BigInteger r;
 		
+		private BigInteger d;
+		private BigInteger x;
+		private BigInteger y;
+		
 		public BinaryDividePos(BigInteger a, BigInteger b) {
 			//v(a) = 0 and v(b) > 0
 			if(secondValuation(a) == 0 && secondValuation(b) != 0) {
 				int j = secondValuation(b);
-				//q = (-a)/(b/2^j) (mod 2^j+1)
-				this.q = ((a.negate()).divide(b.divide(TWO.pow(j)))).mod(TWO.pow(j+1));
+				
+				BigInteger n = TWO.pow(j+1);
+				BigInteger u = a.negate().mod(n);
+				BigInteger v = (b.divide(TWO.pow(j))).mod(n);
+				
+				euclidAlgorithm(n, v);
+				
+				BigInteger z = this.y;
+				
+				this.q = (u.multiply(z)).mod(n);
+				
 				//r = a + qb/2^j
-				this.r = a.add((this.q.multiply(b)).divide(TWO.pow(j)));				
+				this.r = a.add((this.q.multiply(b)).divide(TWO.pow(j)));
+				
+				/*//q = (-a)/(b/2^j) (mod 2^j+1)
+				//this.q = ((a.negate()).divide(b.divide(TWO.pow(j)))).mod(TWO.pow(j+1));
+				this.q = (a.negate().mod(TWO.pow(j+1))).divide((b.divide(TWO.pow(j))).mod(TWO.pow(j+1)));
+				//r = a + qb/2^j
+				this.r = a.add((this.q.multiply(b)).divide(TWO.pow(j)));*/				
+			}
+		}
+		
+		private void euclidAlgorithm(BigInteger a, BigInteger b) {
+			BigInteger aHatch = new BigInteger(a.toString());
+			BigInteger bHatch = new BigInteger(b.toString());
+			if(b.compareTo(BigInteger.ZERO) == 0) {
+				this.d = aHatch;
+				this.x = BigInteger.ONE;
+				this.y = BigInteger.ZERO;
+			} else {
+				BigInteger x2 = BigInteger.ONE;
+				BigInteger x1 = BigInteger.ZERO;
+				BigInteger y2 = BigInteger.ZERO;
+				BigInteger y1 = BigInteger.ONE;
+				
+				while(bHatch.compareTo(BigInteger.ZERO) > 0) {
+					
+					BigInteger qq = aHatch.divide(bHatch);
+					BigInteger rr = aHatch.subtract(qq.multiply(bHatch));
+					this.x = x2.subtract(qq.multiply(x1));
+					this.y = y2.subtract(qq.multiply(y1));
+					aHatch = bHatch;
+					bHatch = rr;
+					x2 = x1;
+					x1 = this.x;
+					y2 = y1;
+					y1 = this.y;
+					
+				}
+				
+				this.d = aHatch;
+				this.x = x2;
+				this.y = y2;
 			}
 		}
 		
@@ -136,8 +196,8 @@ public class MLogNJacobiAlgorithm implements Symbols {
 					BigInteger RR12 = new BigInteger(String.valueOf(new Double(RR.getEntry(0, 1)).intValue()));
 					BigInteger RR21 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 0)).intValue()));
 					BigInteger RR22 = new BigInteger(String.valueOf(new Double(RR.getEntry(1, 1)).intValue()));
-					BigInteger aHatch = (TWO.pow(-2*j1.intValue())).multiply((RR11.multiply(a)).add(RR12.multiply(b)));
-					BigInteger bHatch = (TWO.pow(-2*j1.intValue())).multiply((RR21.multiply(a)).add(RR22.multiply(b)));
+					BigInteger aHatch = ((RR11.multiply(a)).add(RR12.multiply(b))).divide(TWO.pow(2*j1.intValue()));
+					BigInteger bHatch = ((RR21.multiply(a)).add(RR22.multiply(b))).divide(TWO.pow(2*j1.intValue()));
 					int j0 = secondValuation(bHatch);
 					if(j0 + j1.intValue() > k) {
 						this.s = s1;
@@ -159,7 +219,7 @@ public class MLogNJacobiAlgorithm implements Symbols {
 							//d = a' - b''
 							BigInteger d = aHatch.subtract(bDoubleHatch);
 							//m = min(v(d)/2, k-j1)
-							if(secondValuation(d)/2 < k - j1.intValue()) {
+							if((secondValuation(d)/2 < k - j1.intValue()) && (secondValuation(d) != -1)) {
 								m = new BigInteger(String.valueOf(secondValuation(d)/2));
 							}else {
 								m = new BigInteger(String.valueOf(k - j1.intValue()));
@@ -174,7 +234,7 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						    Q.addToEntry(0, 0, (((FOUR.pow(m.intValue())).add(FOUR.multiply(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
 						    Q.addToEntry(0, 1, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
 						    Q.addToEntry(1, 0, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
-						    Q.addToEntry(1, 1, (((FOUR.pow(m.intValue())).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE)).intValue());
+						    Q.addToEntry(1, 1, (((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE)).intValue());
 						} else {
 							s0 = (s0.add(((aHatch.subtract(BigInteger.ONE)).multiply(bDoubleHatch.subtract(BigInteger.ONE))).divide(FOUR))).mod(TWO);
 							a2 = bDoubleHatch;
@@ -186,7 +246,7 @@ public class MLogNJacobiAlgorithm implements Symbols {
 							m = new BigInteger(String.valueOf(j0));
 						}
 						
-						s0 = ((s0.add(((a2.pow(2)).subtract(BigInteger.ONE)).multiply(new BigInteger(String.valueOf(j0))))).divide(EIGHT)).mod(TWO);
+						s0 = (s0.add(((a2.pow(2)).subtract(BigInteger.ONE)).multiply(new BigInteger(String.valueOf(j0))).divide(EIGHT))).mod(TWO);
 						int k2 = k - (m.intValue() + j1.intValue());
 						HalfBinaryJacobi halfBinaryJacobi2 = new HalfBinaryJacobi(a2.mod(TWO.pow(2*k2 + 2)), b2.mod(TWO.pow(2*k2 + 2)), k2);
 						BigInteger s2 = halfBinaryJacobi2.getS();
