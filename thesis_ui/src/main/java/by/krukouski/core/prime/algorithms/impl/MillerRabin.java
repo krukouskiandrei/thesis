@@ -19,6 +19,8 @@ public class MillerRabin implements ProbabilityAlgorithm {
 	private static final BigInteger TWO = new BigInteger("2");
 	private BigInteger A = BigInteger.ONE;
 	
+	private boolean featureToggleTimeEnable = true;
+	
 	private Random rnd = new Random();
 	
 	private void increaseArgumentNum(BigInteger p) {
@@ -26,6 +28,10 @@ public class MillerRabin implements ProbabilityAlgorithm {
 			A = new BigInteger(p.bitLength(), rnd);
 		} while (A.compareTo(p) >= 0 || A.compareTo(BigInteger.ZERO) == 0 || A.compareTo(BigInteger.ONE) == 0);
 		log.info("A = " + A);
+	}
+	
+	public void setFeatureToggleTimeEnable(boolean featureToggleTimeEnable) {
+		this.featureToggleTimeEnable = featureToggleTimeEnable;		
 	}
 	
 	//decomposition n-1 = 2^s * t 
@@ -55,17 +61,22 @@ public class MillerRabin implements ProbabilityAlgorithm {
 			return result;
 		}
 		
-		TimeTracker.getInstance().start();
+		if(featureToggleTimeEnable) {
+			TimeTracker.getInstance().start();
+		}
 		for(int i = 0; i < primeNumberInfo.getProbability(); i++) {
 			if(!check(p)) {
-				TimeTracker.getInstance().stop();
+				if(featureToggleTimeEnable) {
+					TimeTracker.getInstance().stop();
+				}
 				log.info(p + " not prime number");
 				result = false;
 				return result;
 			}
 		}
-		TimeTracker.getInstance().stop();
-		
+		if(featureToggleTimeEnable) {
+			TimeTracker.getInstance().stop();
+		}
 		log.info(p + "is prime number");
 				
 		return result;

@@ -1,5 +1,6 @@
 <%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:if test="${not empty testResult}">
 <div class="columns">
 	<div class="column">
@@ -13,16 +14,20 @@
 						</div>
   					</div>
   					<div class="card-content">
-    					<h1 class="title is-1 has-text-centered">
+    					
   						<c:choose>
   							<c:when test="${testResult}">
+  							<h1 class="title is-1 has-text-centered" style="color: #23d160;">
   								Number is prime
+  							</h1>
   							</c:when>
   							<c:otherwise>
+  							<h1 class="title is-1 has-text-centered" style="color: #ff3860;">
   								Number isn't prime
+  							</h1>	
   							</c:otherwise>
   						</c:choose>
-  						</h1>
+  						
   						
   						<textarea class="textarea" placeholder="Textarea"><c:out value="${number}" /></textarea>
   					</div>
@@ -34,7 +39,7 @@
 </div>
 </c:if>
 
-<h1 class="title has-text-centered" style="margin-bottom: 70px;">Probabilistic tests of simplicity</h1>
+<h1 class="title has-text-centered" style="margin-bottom: 70px;">Probabilistic tests of primality</h1>
  
 <div class="columns is-mobile">
 	<div class="column is-half is-offset-one-quarter">

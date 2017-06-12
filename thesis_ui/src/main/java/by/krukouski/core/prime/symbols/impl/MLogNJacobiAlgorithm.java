@@ -180,10 +180,6 @@ public class MLogNJacobiAlgorithm implements Symbols {
 					this.R.setA2(BigInteger.ZERO);
 					this.R.setA3(BigInteger.ZERO);
 					this.R.setA4(BigInteger.ONE);
-					/*this.R.addToEntry(0, 0, 1);
-					this.R.addToEntry(0, 1, 0);
-					this.R.addToEntry(1, 0, 0);
-					this.R.addToEntry(1, 1, 1);*/
 				} else {
 					int k1 = k/2;
 					//a1 = a (mod 2^(2*k1 + 2))
@@ -239,10 +235,6 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						    Q.setA2((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE));
 						    Q.setA3((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE));
 						    Q.setA4(((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE));
-						    /*Q.addToEntry(0, 0, (((FOUR.pow(m.intValue())).add(FOUR.multiply(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
-						    Q.addToEntry(0, 1, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
-						    Q.addToEntry(1, 0, ((TWO.multiply((FOUR.pow(m.intValue())).subtract(NEGATIVEONE.pow(m.intValue())))).divide(FIVE)).intValue());
-						    Q.addToEntry(1, 1, (((FOUR.pow(m.intValue()+1)).add(NEGATIVEONE.pow(m.intValue()))).divide(FIVE)).intValue());*/
 						} else {
 							s0 = (s0.add(((aHatch.subtract(BigInteger.ONE)).multiply(bDoubleHatch.subtract(BigInteger.ONE))).divide(FOUR))).mod(TWO);
 							a2 = bDoubleHatch;
@@ -251,10 +243,6 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						    Q.setA2(TWO.pow(j0));
 						    Q.setA3(TWO.pow(j0));
 						    Q.setA4(q);
-							/*Q.addToEntry(0, 0, 0);
-							Q.addToEntry(0, 1, TWO.pow(j0).intValue());
-							Q.addToEntry(1, 0, TWO.pow(j0).intValue());
-							Q.addToEntry(1, 1, q.intValue());*/
 							m = new BigInteger(String.valueOf(j0));
 						}
 						
@@ -264,7 +252,6 @@ public class MLogNJacobiAlgorithm implements Symbols {
 						BigInteger s2 = halfBinaryJacobi2.getS();
 						BigInteger j2 = halfBinaryJacobi2.getJ();
 						MyMatrix S = halfBinaryJacobi2.getR();
-						//BlockRealMatrix S = halfBinaryJacobi2.getR();
 						this.s = ((s0.add(s1)).add(s2)).mod(TWO);
 						this.j = (j1.add(j2)).add(m);
 						this.R = (S.calculate(Q)).calculate(RR);						

@@ -9,7 +9,7 @@ import by.krukouski.thesisfront.dto.PrimeNumberInfo;
 
 public class PrimeNumberThread extends Thread {
 	
-	private BigInteger primeNumber = new BigInteger("103");
+	private BigInteger primeNumber = new BigInteger("1340185579782030309029142285845485748073406778702270938755484147318382420338087834406828955714187005654640257038495796545155402280055987076251704557994637589726712709889312042801858044039590155407650471667907995888292123909278046563998441725881316702608454953284969473141146885140822683049274853701491");
 	private MillerRabin millerRabin = new MillerRabin();
 	private static final BigInteger TWO = new BigInteger("2");
 	private static final BigInteger TEN = new BigInteger("10");
@@ -32,6 +32,7 @@ public class PrimeNumberThread extends Thread {
 		PrimeNumberInfo primeNumberInfo = new PrimeNumberInfo();
 		primeNumberInfo.setProbability(0.75, 4);
 		currentPrimeNumber = primeNumber.add(TWO);
+		millerRabin.setFeatureToggleTimeEnable(false);
 		while(true) {
 			currentPrimeNumber = currentPrimeNumber.add(TWO);
 			if(currentPrimeNumber.mod(TEN).compareTo(FIVE) != 0) {

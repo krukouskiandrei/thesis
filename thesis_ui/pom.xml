@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>by.krukouski</groupId>
   <artifactId>thesis_ui</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>war</packaging>
   
   <build>
